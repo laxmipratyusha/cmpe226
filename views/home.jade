@@ -1,0 +1,35 @@
+doctype html
+html
+	head
+		script(type='text/javascript').
+			function validate(){
+				if(document.forms["myform"].category.selectedIndex ==0 && document.forms["myform"].searchtext.value==''){
+					alert('Please select the category or enter search text')
+					return false
+				}
+			return true
+			}
+	body
+		form(name="myform", action="/home",method='get',onSubmit='return validate()')
+			h1 Welcome to Shopping
+			h3 Select any category
+			select(name='category')
+				option(value='' selected='true') Select one
+				option(value='Electronics') Electronics
+				option(value='Appliances') Appliances
+				option(value='Cosmetics') Cosmetics
+				option(value='Books') Books
+			input(type='text',name='searchtext')
+			input(type="submit",value="Submit")
+		if(result && result.length>0)
+			h2 List of items
+			each product,index in result
+				p
+				hr
+				h3 Product Name : #{product.productname}
+				h4 Product Type : #{product.producttype}
+				h4 Price: $ #{product.price}
+				each val,index in product.meta.toObject()
+					h4 #{index} : #{val}
+		else if(!homepage)
+			p No matching records

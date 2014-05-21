@@ -1,0 +1,24 @@
+doctype html
+html. 
+    <body>
+    <form name="myform" action="/display">
+    <div> Welcome to Pratyusha.Shopping </div>
+    <div> Select any category </div>
+    <select id="categoryid" name="category" onchange="lookup(this.id)">
+      <option id="" selected="selected">Select One</option>
+      <option id="electronics" >Electronics</option>
+      <option id="cosmetics" > Cosmetics</option>
+      <option id="books">Books</option>
+    </select>
+    <script>
+    function lookup(x){
+    alert(document.getElementById(x).options[document.getElementById(x).selectedIndex].text);
+    document.forms["myform"].submit();
+    }
+    </script>
+    <input type="submit">
+    </form>
+    </body>
+
+
+
